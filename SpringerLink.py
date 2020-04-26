@@ -42,7 +42,7 @@ def getDownloadLink(url):
 # =============================================================================
 def replaceInvalidChar(st, ch):
     # initializing bad_chars_list 
-    INVALID_CHARS = ['<', '>', ':', '*', '/', '\'', '?'] 
+    INVALID_CHARS = ['<', '>', ':', '*', '/', '?'] 
 
     # using replace() to  
     # remove bad_chars  
