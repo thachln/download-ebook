@@ -54,14 +54,16 @@ for index, row in df.iterrows():
     
     # Build path to store content of book
     filePdfPath = os.path.join(bookFolderPath, title + ".pdf")
-    filename = Path(filePdfPath)
-    
-    # Download book and write to path
-    print(f"Dowloading book {index}/{nBook}, '{title}'")
-    downloadLink = getDownloadLink(url)
-    response = requests.get(downloadLink)
-    filename.write_bytes(response.content)
-    
+    if (not os.path.exists(filePdfPath)):
+        filename = Path(filePdfPath)
+        
+        # Download book and write to path
+        print(f"Dowloading book {index + 1}/{nBook}, '{title}'")
+        downloadLink = getDownloadLink(url)
+        response = requests.get(downloadLink)
+        filename.write_bytes(response.content)
+    else:
+        print("Book is exited.")
     # Uncomment these command to dowload all books from the data frame.
     if index > 3:
         break
